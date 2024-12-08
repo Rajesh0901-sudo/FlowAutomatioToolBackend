@@ -1,7 +1,7 @@
 from docx import Document
 from check_existing_file import check_file_status
 
-def save_results_to_docx(column_names, rows, file_name="query_results.docx"):
+def save_results_to_docx(db_name,flow_name,column_names, rows, file_name="query_results.docx"):
 
     if file_name == (None, ''):
         response = 'File name is empty'
@@ -29,7 +29,7 @@ def save_results_to_docx(column_names, rows, file_name="query_results.docx"):
         return 0
 
 
-    doc.add_heading("Query Results", level=1)
+    doc.add_heading(db_name + ',' + flow_name + ' queries', level=1)
 
     table = doc.add_table(rows=1,cols=len(column_names))
     table.style = 'Table Grid'

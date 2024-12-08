@@ -1,16 +1,14 @@
 import json,os
 
-envs_file = "data/envs.json"
+envs_file = "./data/new_envs.json"
 
 
 def env_file_exist():
     try:
         if not os.path.exists(envs_file):
-            print("Configuration env file not found")
-            return False
-        
-        else:
-            return True
+            print(envs_file,"Configuration env file not found")
+
+        return True
     
     except Exception as e:
         print("an error occured while opening env files",e)

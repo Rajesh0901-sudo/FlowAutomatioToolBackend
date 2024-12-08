@@ -3,7 +3,8 @@
         "db_user_name":"OMS1OMS",
         "db_password":"OMS1OMS",
         "db_host":"illnqw7974",
-        "service_name":"CHRDB7936"
+        "service_name":"CHRDB7936",
+        "new_service_name":"CHRDB7936" 
     }
 }
 

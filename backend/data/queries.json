@@ -1,0 +1,8 @@
+{
+    "oms":{
+        "provide":[
+            "select CTDB_CRE_DATETIME, ORDER_UNIT_ID, ORDER_ID, STATUS, ACTION_TYPE, AP_ID, reason_id, customer_id from tborder_action where customer_id = '1000000438' order by CTDB_CRE_DATETIME asc",
+            "select * from tbbilling_Charge where ap_item_id in (select ap_id from tbap_price_plan where order_Action_id='2038') order by description desc"
+        ]
+    }
+}

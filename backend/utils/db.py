@@ -1,6 +1,5 @@
 from sqlalchemy import create_engine,text
 import oracledb
-from doc_generator import save_results_to_docx
 from sqlalchemy.orm import sessionmaker
 from queries import execute_queries
 from config import load_env_config
@@ -42,7 +41,7 @@ def get_db_session(env_name):
 
 def main():
     newSession =  get_db_session("illnqw7936")
-    execute_queries(newSession)
+    execute_queries(newSession,'oms','provide')
     newSession.close()
     print("Closed session")
 
