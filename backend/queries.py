@@ -4,7 +4,7 @@ from doc_generator import save_results_to_docx
 
 def execute_queries(session):
 
-    if session is ('',None):
+    if session == ('',None):
         print("No db session exist")
         return 0
 
