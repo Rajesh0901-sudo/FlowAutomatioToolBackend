@@ -1,7 +1,7 @@
 from sqlalchemy import text
-from doc_generator import save_results_to_docx
+from utils.doc_generator import save_results_to_docx
 import json,os
-from prepareQueries import prepare_queries
+from utils.prepareQueries import prepare_queries
 
 
 query_file = "./data/queries.json"

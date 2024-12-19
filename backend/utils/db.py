@@ -1,8 +1,8 @@
 from sqlalchemy import create_engine,text
 import oracledb
 from sqlalchemy.orm import sessionmaker
-from queries import execute_queries
-from config import load_env_config
+from .queries import execute_queries
+from .config import load_env_config
 
 
 
@@ -39,14 +39,12 @@ def get_db_session(env_name):
     return newSession
 
 
-def main():
-    newSession =  get_db_session("illnqw8378")
-    execute_queries(newSession,'oms','provide')
-    newSession.close()
-    print("Closed session")
-
-if __name__ == "__main__":
-    main()
-
-
+def run_queries(env_name,db_name,flow_name):
+    newSession =  get_db_session(env_name)
+    if newSession:
+        execute_queries(newSession,db_name,flow_name)
+        newSession.close()
+        print("Closed session")
+    else:
+        print("Failed to create database session")
 

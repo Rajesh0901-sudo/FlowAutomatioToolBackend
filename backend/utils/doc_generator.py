@@ -1,5 +1,5 @@
 from docx import Document
-from check_existing_file import check_file_status
+from utils.check_existing_file import check_file_status
 
 def save_results_to_docx(db_name,flow_name,column_names, rows, file_name="query_results.docx"):
 
