@@ -1,26 +1,29 @@
 {
-    "illnqw7936":{
-        "db_user_name":"OMS1OMS",
-        "db_password":"OMS1OMS",
-        "db_host":"illnqw7974",
-        "service_name":"CHRDB7936",
-        "new_service_name":"CHRDB7936" 
+    "illnqw7936": {
+        "db_user_name": "OMS1OMS",
+        "db_password": "OMS1OMS",
+        "db_host": "illnqw7974",
+        "service_name": "CHRDB7936",
+        "new_service_name": "CHRDB7936"
     },
-    "illnqw7946":{
-        "db_user_name":"OMS1OMS",
-        "db_password":"OMS1OMS",
-        "db_host":"illnqw7974",
-        "service_name":"CHRDB7936",
-        "new_service_name":"CHRDB7936" 
+    "illnqw7946": {
+        "db_user_name": "OMS1OMS",
+        "db_password": "OMS1OMS",
+        "db_host": "illnqw7974",
+        "service_name": "CHRDB7936",
+        "new_service_name": "CHRDB7936"
     },
-    "illnqw8378":{
-        "db_user_name":"OMS1OMS",
-        "db_password":"OMS1OMS",
-        "db_host":"illnqw8327",
-        "service_name":"CHRDB8378",
-        "new_service_name":"CHRDB8378" 
+    "illnqw8378": {
+        "db_user_name": "OMS1OMS",
+        "db_password": "OMS1OMS",
+        "db_host": "illnqw8327",
+        "service_name": "CHRDB8378",
+        "new_service_name": "CHRDB8378"
+    },
+    "illnqw8392": {
+        "db_user_name": "OMS1OMS",
+        "db_password": "OMS1OMS",
+        "db_host": "illnqw8329",
+        "service_name": "CHRDB8392"
     }
 }
-
-
-
