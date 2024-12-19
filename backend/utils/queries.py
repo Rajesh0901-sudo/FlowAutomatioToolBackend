@@ -1,6 +1,7 @@
 from sqlalchemy import text
 from doc_generator import save_results_to_docx
 import json,os
+from prepareQueries import prepare_queries
 
 
 query_file = "./data/queries.json"
@@ -39,6 +40,7 @@ def load_queries(db_name,flow_name):
         print("an error occured while opening env files-",e)
 
 
+
 def execute_queries(session,db_name,flow_name):
 
     if session == ('',None):
@@ -47,7 +49,7 @@ def execute_queries(session,db_name,flow_name):
 
     print("session connected succesfully")
 
-    queries = load_queries(db_name,flow_name)
+    queries = prepare_queries()
 
     for query in queries:
         result = session.execute(text (query))

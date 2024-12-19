@@ -40,7 +40,7 @@ def get_db_session(env_name):
 
 
 def main():
-    newSession =  get_db_session("illnqw7936")
+    newSession =  get_db_session("illnqw8378")
     execute_queries(newSession,'oms','provide')
     newSession.close()
     print("Closed session")
