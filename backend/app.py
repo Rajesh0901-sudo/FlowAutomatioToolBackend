@@ -47,7 +47,7 @@ def run_query_api():
 
     if not env_name or not db_name or not flow_name:
         return jsonify({"error": "Missing required details"}), 400
-    
+
     try:
         db = Database(env_name)
         db.run_queries(db_name, flow_name)

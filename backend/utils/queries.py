@@ -1,6 +1,6 @@
 # queries.py
 from sqlalchemy import text
-from utils.doc_generator import DocumentGenerator
+from utils.doc_generator import save_results_to_docx
 import json
 import os
 from utils.prepare_queries import QueryPreparer
@@ -57,5 +57,4 @@ class QueryExecutor:
             for row in rows:
                 print(row)
 
-            doc_generator = DocumentGenerator()
-            doc_generator.save_results_to_docx(db_name, flow_name, column_names, rows)
+            save_results_to_docx(db_name, flow_name, column_names, rows)

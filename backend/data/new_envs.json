@@ -32,5 +32,8 @@
         "db_host": "illnqw8378",
         "service_name": "illnqw8378",
         "new_service_name": "illnqw8378"
+    },
+    "test_env": {
+        "db_user_name": "updated_user"
     }
 }

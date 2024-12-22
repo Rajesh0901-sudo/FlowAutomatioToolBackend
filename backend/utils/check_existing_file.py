@@ -1,8 +1,7 @@
 # check_existing_file.py
 import os
 
-
-def check_file_status(self, file_name):
+def check_file_status(file_name):
     try:
         if os.path.exists(file_name):
             print("File exists appending it to the last")

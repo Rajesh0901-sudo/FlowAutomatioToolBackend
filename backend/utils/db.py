@@ -38,6 +38,7 @@ class Database:
             return None
 
     def run_queries(self, db_name, flow_name):
+        self.get_db_session()
         if self.session:
             query_executor = QueryExecutor()
             query_executor.execute_queries(self.session, db_name, flow_name)
@@ -46,6 +47,3 @@ class Database:
         else:
             print("Failed to create a database session")
 
-if __name__ == "__main__":
-    db = Database("illnqw8378")
-    db.run_queries("oms", "provide")

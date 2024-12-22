@@ -35,7 +35,7 @@ class QueryPreparer:
         customer_id = customer_details.get('CreateCustomerResponse', {}).get('ID')
         if customer_id:
             query1 = f"select CTDB_CRE_DATETIME, ORDER_UNIT_ID, ORDER_ID, STATUS, ACTION_TYPE, AP_ID, reason_id, customer_id from tborder_action where customer_id = '{customer_id}' order by CTDB_CRE_DATETIME asc"
-            query2 = f"select CHARGE_ID, CTDB_CRE_DATETIME, TYPE, DESCRIPTION, ACTUAL_PRICE, ORIGINAL_PRICE from tbbilling_Charge where ap_item_id in (select ap_id from tbap_price_plan where order_Action_id='70406') order by description desc"
+            query2 = f"select CHARGE_ID, CTDB_CRE_DATETIME, TYPE, DESCRIPTION, ACTUAL_PRICE, ORIGINAL_PRICE from tbbilling_Charge where ap_item_id in (select ap_id from tbap_price_plan where order_Action_id='21814') order by description desc"
 
             queries.append(query1)
             queries.append(query2)
