@@ -25,5 +25,12 @@
         "db_password": "OMS1OMS",
         "db_host": "illnqw8329",
         "service_name": "CHRDB8392"
+    },
+    "illnqw8377": {
+        "db_user_name": "illnqw8378",
+        "db_password": "illnqw8378",
+        "db_host": "illnqw8378",
+        "service_name": "illnqw8378",
+        "new_service_name": "illnqw8378"
     }
 }

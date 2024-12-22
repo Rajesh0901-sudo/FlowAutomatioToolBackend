@@ -3,3 +3,4 @@ flask-sqlalchemy
 oracledb
 python-docx
 python-dotenv
+flask-cors

@@ -1,9 +1,12 @@
 # app.py
 from flask import Flask, request, jsonify
 from utils.add_data_in_json import DataManager
-from db import Database
+from utils.db import Database
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 data_manager = DataManager()
 
