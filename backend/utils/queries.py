@@ -1,67 +1,61 @@
+# queries.py
 from sqlalchemy import text
-from utils.doc_generator import save_results_to_docx
-import json,os
-from utils.prepareQueries import prepare_queries
+from utils.doc_generator import DocumentGenerator
+import json
+import os
+from utils.prepare_queries import QueryPreparer
 
+class QueryExecutor:
+    def __init__(self):
+        self.query_file = "./data/queries.json"
 
-query_file = "./data/queries.json"
-
-def query_file_exist():
-    try:
-        if not os.path.exists(query_file):
-            print(query_file,"query_file not found")
-            return False
-        
-        else:
+    def query_file_exist(self):
+        try:
+            if not os.path.exists(self.query_file):
+                print(self.query_file, "query_file not found")
+                return False
             return True
-    
-    except Exception as e:
-        print("an error occured while opening query_file",e)
-        return False
-    
-def load_queries(db_name,flow_name):
+        except Exception as e:
+            print("an error occurred while opening query_file", e)
+            return False
 
-    if query_file_exist() != True:
-        return None
-
-    try:
-
-        with open (query_file,"r") as file:
-            queries = json.load(file)
-
-        if db_name not in queries:
-            print("query related to db not found")
+    def load_queries(self, db_name, flow_name):
+        if not self.query_file_exist():
             return None
-        
-        print(queries)
-        return queries[db_name][flow_name]
-    
-    except Exception as e:
-        print("an error occured while opening env files-",e)
 
+        try:
+            with open(self.query_file, "r") as file:
+                queries = json.load(file)
 
+            if db_name not in queries:
+                print("query related to db not found")
+                return None
 
-def execute_queries(session,db_name,flow_name):
+            return queries[db_name][flow_name]
+        except Exception as e:
+            print("an error occurred while opening query_file", e)
+            return None
 
-    if session == ('',None):
-        print("No db session exist")
-        return 0
+    def execute_queries(self, session, db_name, flow_name):
+        if not session:
+            print("No db session exists")
+            return 0
 
-    print("session connected succesfully")
+        print("session connected successfully")
 
-    queries = prepare_queries()
+        query_preparer = QueryPreparer()
+        queries = query_preparer.prepare_queries()
 
-    for query in queries:
-        result = session.execute(text (query))
-        rows = result.fetchall() 
-        column_name = result.keys()
-        print("Query executed succesfully")
+        for query in queries:
+            result = session.execute(text(query))
+            rows = result.fetchall()
+            column_names = result.keys()
+            print("Query executed successfully")
 
-        print(f"{' | '.join(column_name)}")
-        
-        for row in rows:
-            print(row) 
+            print(f"{' | '.join(column_names)}")
 
-        save_results_to_docx(db_name,flow_name,column_name,rows)
-    
-    
+            for row in rows:
+                print(row)
+
+            doc_generator = DocumentGenerator()
+            doc_generator.save_results_to_docx(db_name, flow_name, column_names, rows)
