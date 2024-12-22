@@ -44,10 +44,10 @@ def save_results_to_docx(db_name,flow_name,column_names, rows, file_name="query_
     hdr_cells = table.rows[0].cells
 
     for idx,column_name in enumerate(column_names):
-        hdr_cells[idx].text = column_name
+        hdr_cells[idx].text = column_name.capitalize()
 
         run = hdr_cells[idx].paragraphs[0].runs[0]
-        run.font.size = Pt(10)
+        run.font.size = Pt(6)
         #set_cell_background_color(hdr_cells[idx],'0000FF')
 
     for row in rows:
@@ -55,7 +55,7 @@ def save_results_to_docx(db_name,flow_name,column_names, rows, file_name="query_
         for idx,data in enumerate(row):
             row_cells[idx].text = str(data)
             run = row_cells[idx].paragraphs[0].runs[0]
-            run.font.size = Pt(10)
+            run.font.size = Pt(6)
 
     doc.save(file_name)
     print("Document saved")

@@ -44,7 +44,7 @@ class QueryExecutor:
         print("session connected successfully")
 
         query_preparer = QueryPreparer()
-        queries = query_preparer.prepare_queries()
+        queries = query_preparer.prepare_queries(db_name)
 
         for query in queries:
             result = session.execute(text(query))
