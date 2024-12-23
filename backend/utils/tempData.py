@@ -1,5 +1,59 @@
-// src/AddEnvConfig.js
+npm install @material-ui/core @material-ui/icons axios redux react-redux redux-thunk
+
+import React from 'react';
+import { Container, CssBaseline } from '@material-ui/core';
+import Header from './Header';
+import Footer from './Footer';
+
+const Layout = ({ children }) => {
+  return (
+    <>
+      <CssBaseline />
+      <Header />
+      <Container>
+        {children}
+      </Container>
+      <Footer />
+    </>
+  );
+};
+
+export default Layout;
+
+import React from 'react';
+import { AppBar, Toolbar, Typography } from '@material-ui/core';
+
+const Header = () => {
+  return (
+    <AppBar position="static">
+      <Toolbar>
+        <Typography variant="h6">
+          Flow Automation Tool
+        </Typography>
+      </Toolbar>
+    </AppBar>
+  );
+};
+
+export default Header;
+
+import React from 'react';
+import { Box, Typography } from '@material-ui/core';
+
+const Footer = () => {
+  return (
+    <Box mt={5} mb={3} textAlign="center">
+      <Typography variant="body2" color="textSecondary">
+        &copy; {new Date().getFullYear()} Flow Automation Tool. All rights reserved.
+      </Typography>
+    </Box>
+  );
+};
+
+export default Footer;
+
 import React, { useState } from 'react';
+import { TextField, Button, Typography, Box } from '@material-ui/core';
 import axios from 'axios';
 
 const AddEnvConfig = () => {
@@ -34,41 +88,75 @@ const AddEnvConfig = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Add Environment Configuration</h2>
-      <label>
-        Environment Name:
-        <input type="text" value={envName} onChange={(e) => setEnvName(e.target.value)} required />
-      </label>
-      <label>
-        DB User Name:
-        <input type="text" name="db_user_name" value={configurations.db_user_name} onChange={handleChange} required />
-      </label>
-      <label>
-        DB Password:
-        <input type="password" name="db_password" value={configurations.db_password} onChange={handleChange} required />
-      </label>
-      <label>
-        DB Host:
-        <input type="text" name="db_host" value={configurations.db_host} onChange={handleChange} required />
-      </label>
-      <label>
-        Service Name:
-        <input type="text" name="service_name" value={configurations.service_name} onChange={handleChange} required />
-      </label>
-      <label>
-        New Service Name:
-        <input type="text" name="new_service_name" value={configurations.new_service_name} onChange={handleChange} required />
-      </label>
-      <button type="submit">Add Environment</button>
-    </form>
+    <Box mt={3}>
+      <Typography variant="h5">Add Environment Configuration</Typography>
+      <form onSubmit={handleSubmit}>
+        <TextField
+          label="Environment Name"
+          value={envName}
+          onChange={(e) => setEnvName(e.target.value)}
+          required
+          fullWidth
+          margin="normal"
+        />
+        <TextField
+          label="DB User Name"
+          name="db_user_name"
+          value={configurations.db_user_name}
+          onChange={handleChange}
+          required
+          fullWidth
+          margin="normal"
+        />
+        <TextField
+          label="DB Password"
+          name="db_password"
+          type="password"
+          value={configurations.db_password}
+          onChange={handleChange}
+          required
+          fullWidth
+          margin="normal"
+        />
+        <TextField
+          label="DB Host"
+          name="db_host"
+          value={configurations.db_host}
+          onChange={handleChange}
+          required
+          fullWidth
+          margin="normal"
+        />
+        <TextField
+          label="Service Name"
+          name="service_name"
+          value={configurations.service_name}
+          onChange={handleChange}
+          required
+          fullWidth
+          margin="normal"
+        />
+        <TextField
+          label="New Service Name"
+          name="new_service_name"
+          value={configurations.new_service_name}
+          onChange={handleChange}
+          required
+          fullWidth
+          margin="normal"
+        />
+        <Button type="submit" variant="contained" color="primary" fullWidth>
+          Add Environment
+        </Button>
+      </form>
+    </Box>
   );
 };
 
 export default AddEnvConfig;
 
-// src/AddCustomerDetails.js
 import React, { useState } from 'react';
+import { TextField, Button, Typography, Box } from '@material-ui/core';
 import axios from 'axios';
 
 const AddCustomerDetails = () => {
@@ -102,41 +190,75 @@ const AddCustomerDetails = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Add Customer Details</h2>
-      <label>
-        Individual ID:
-        <input type="text" name="individualId" value={customerDetails.individualId} onChange={handleChange} required />
-      </label>
-      <label>
-        Customer Bill Spec ID:
-        <input type="text" name="customerBillSpecId" value={customerDetails.customerBillSpecId} onChange={handleChange} required />
-      </label>
-      <label>
-        Customer Address ID:
-        <input type="text" name="customerAddressId" value={customerDetails.customerAddressId} onChange={handleChange} required />
-      </label>
-      <label>
-        Customer Account ID:
-        <input type="text" name="customerAccountId" value={customerDetails.customerAccountId} onChange={handleChange} required />
-      </label>
-      <label>
-        Name:
-        <input type="text" name="name" value={customerDetails.name} onChange={handleChange} required />
-      </label>
-      <label>
-        ID:
-        <input type="text" name="ID" value={customerDetails.ID} onChange={handleChange} required />
-      </label>
-      <button type="submit">Add Customer</button>
-    </form>
+    <Box mt={3}>
+      <Typography variant="h5">Add Customer Details</Typography>
+      <form onSubmit={handleSubmit}>
+        <TextField
+          label="Individual ID"
+          name="individualId"
+          value={customerDetails.individualId}
+          onChange={handleChange}
+          required
+          fullWidth
+          margin="normal"
+        />
+        <TextField
+          label="Customer Bill Spec ID"
+          name="customerBillSpecId"
+          value={customerDetails.customerBillSpecId}
+          onChange={handleChange}
+          required
+          fullWidth
+          margin="normal"
+        />
+        <TextField
+          label="Customer Address ID"
+          name="customerAddressId"
+          value={customerDetails.customerAddressId}
+          onChange={handleChange}
+          required
+          fullWidth
+          margin="normal"
+        />
+        <TextField
+          label="Customer Account ID"
+          name="customerAccountId"
+          value={customerDetails.customerAccountId}
+          onChange={handleChange}
+          required
+          fullWidth
+          margin="normal"
+        />
+        <TextField
+          label="Name"
+          name="name"
+          value={customerDetails.name}
+          onChange={handleChange}
+          required
+          fullWidth
+          margin="normal"
+        />
+        <TextField
+          label="ID"
+          name="ID"
+          value={customerDetails.ID}
+          onChange={handleChange}
+          required
+          fullWidth
+          margin="normal"
+        />
+        <Button type="submit" variant="contained" color="primary" fullWidth>
+          Add Customer
+        </Button>
+      </form>
+    </Box>
   );
 };
 
 export default AddCustomerDetails;
 
-// src/RunQuery.js
 import React, { useState } from 'react';
+import { TextField, Button, Typography, Box } from '@material-ui/core';
 import axios from 'axios';
 
 const RunQuery = () => {
@@ -165,43 +287,150 @@ const RunQuery = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Run Query</h2>
-      <label>
-        Environment Name:
-        <input type="text" name="env_name" value={queryDetails.env_name} onChange={handleChange} required />
-      </label>
-      <label>
-        DB Name:
-        <input type="text" name="db_name" value={queryDetails.db_name} onChange={handleChange} required />
-      </label>
-      <label>
-        Flow Name:
-        <input type="text" name="flow_name" value={queryDetails.flow_name} onChange={handleChange} required />
-      </label>
-      <button type="submit">Run Query</button>
-    </form>
+    <Box mt={3}>
+      <Typography variant="h5">Run Query</Typography>
+      <form onSubmit={handleSubmit}>
+        <TextField
+          label="Environment Name"
+          name="env_name"
+          value={queryDetails.env_name}
+          onChange={handleChange}
+          required
+          fullWidth
+          margin="normal"
+        />
+        <TextField
+          label="DB Name"
+          name="db_name"
+          value={queryDetails.db_name}
+          onChange={handleChange}
+          required
+          fullWidth
+          margin="normal"
+        />
+        <TextField
+          label="Flow Name"
+          name="flow_name"
+          value={queryDetails.flow_name}
+          onChange={handleChange}
+          required
+          fullWidth
+          margin="normal"
+        />
+        <Button type="submit" variant="contained" color="primary" fullWidth>
+          Run Query
+        </Button>
+      </form>
+    </Box>
   );
 };
 
 export default RunQuery;
 
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import rootReducer from './reducers/rootReducer';
 
-// src/App.js
+const store = createStore(rootReducer, applyMiddleware(thunk));
+
+export default store;
+
+import { combineReducers } from 'redux';
+import queryReducer from './queryReducer';
+
+const rootReducer = combineReducers({
+  query: queryReducer,
+});
+
+export default rootReducer;
+
+const initialState = {
+  status: '',
+  error: null,
+};
+
+const queryReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case 'QUERY_START':
+      return { ...state, status: 'running', error: null };
+    case 'QUERY_SUCCESS':
+      return { ...state, status: 'success', error: null };
+    case 'QUERY_FAILURE':
+      return { ...state, status: 'failure', error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export default queryReducer;
+
+import axios from 'axios';
+
+export const runQuery = (queryDetails) => async (dispatch) => {
+  dispatch({ type: 'QUERY_START' });
+  try {
+    const response = await axios.post('http://localhost:5000/run_query_api', queryDetails);
+    dispatch({ type: 'QUERY_SUCCESS' });
+    alert(response.data.message);
+  } catch (error) {
+    dispatch({ type: 'QUERY_FAILURE', payload: error.response.data.error });
+    alert(error.response.data.error);
+  }
+};
+
 import React from 'react';
-import AddEnvConfig from './AddEnvConfig';
-import AddCustomerDetails from './AddCustomerDetails';
-import RunQuery from './RunQuery';
+import { useSelector } from 'react-redux';
+import { Typography, Box } from '@material-ui/core';
+
+const QueryStatus = () => {
+  const { status, error } = useSelector((state) => state.query);
+
+  return (
+    <Box mt={3}>
+      <Typography variant="h6">Query Status</Typography>
+      <Typography variant="body1">Status: {status}</Typography>
+      {error && <Typography variant="body1" color="error">Error: {error}</Typography>}
+    </Box>
+  );
+};
+
+export default QueryStatus;
+
+import React from 'react';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import Layout from './components/Layout';
+import AddEnvConfig from './components/AddEnvConfig';
+import AddCustomerDetails from './components/AddCustomerDetails';
+import RunQuery from './components/RunQuery';
+import QueryStatus from './components/QueryStatus';
 
 const App = () => {
   return (
-    <div>
-      <h1>Flow Automation Tool</h1>
-      <AddEnvConfig />
-      <AddCustomerDetails />
-      <RunQuery />
-    </div>
+    <Provider store={store}>
+      <Layout>
+        <AddEnvConfig />
+        <AddCustomerDetails />
+        <RunQuery />
+        <QueryStatus />
+      </Layout>
+    </Provider>
   );
 };
 
 export default App;
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+reportWebVitals();
