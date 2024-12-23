@@ -1,7 +1,5 @@
-npm install @material-ui/core @material-ui/icons axios redux react-redux redux-thunk
-
 import React from 'react';
-import { Container, CssBaseline } from '@material-ui/core';
+import { Container, CssBaseline } from '@mui/material';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -19,9 +17,8 @@ const Layout = ({ children }) => {
 };
 
 export default Layout;
-
 import React from 'react';
-import { AppBar, Toolbar, Typography } from '@material-ui/core';
+import { AppBar, Toolbar, Typography } from '@mui/material';
 
 const Header = () => {
   return (
@@ -36,9 +33,8 @@ const Header = () => {
 };
 
 export default Header;
-
 import React from 'react';
-import { Box, Typography } from '@material-ui/core';
+import { Box, Typography } from '@mui/material';
 
 const Footer = () => {
   return (
@@ -51,9 +47,8 @@ const Footer = () => {
 };
 
 export default Footer;
-
 import React, { useState } from 'react';
-import { TextField, Button, Typography, Box } from '@material-ui/core';
+import { TextField, Button, Typography, Box } from '@mui/material';
 import axios from 'axios';
 
 const AddEnvConfig = () => {
@@ -156,7 +151,7 @@ const AddEnvConfig = () => {
 export default AddEnvConfig;
 
 import React, { useState } from 'react';
-import { TextField, Button, Typography, Box } from '@material-ui/core';
+import { TextField, Button, Typography, Box } from '@mui/material';
 import axios from 'axios';
 
 const AddCustomerDetails = () => {
@@ -258,8 +253,9 @@ const AddCustomerDetails = () => {
 export default AddCustomerDetails;
 
 import React, { useState } from 'react';
-import { TextField, Button, Typography, Box } from '@material-ui/core';
-import axios from 'axios';
+import { TextField, Button, Typography, Box } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { runQuery } from '../redux/actions/queryActions';
 
 const RunQuery = () => {
   const [queryDetails, setQueryDetails] = useState({
@@ -268,14 +264,79 @@ const RunQuery = () => {
     flow_name: ''
   });
 
+  const dispatch = useDispatch();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post('http://localhost:5000/run_query_api', queryDetails);
-      alert(response.data.message);
-    } catch (error) {
-      alert(error.response.data.error);
-    }
+    dispatch(runQuery(queryDetails));
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setQueryDetails((prevDetails) => ({
+      ...prevDetails,
+      [name]: value
+    }));
+  };
+
+  return (
+    <Box mt={3}>
+      <Typography variant="h5">Run Query</Typography>
+      <form onSubmit={handleSubmit}>
+        <TextField
+          label="Environment Name"
+          name="env_name"
+          value={queryDetails.env_name}
+          onChange={handleChange}
+          required
+          fullWidth
+          margin="normal"
+        />
+        <TextField
+          label="DB Name"
+          name="db_name"
+          value={queryDetails.db_name}
+          onChange={handleChange}
+          required
+          fullWidth
+          margin="normal"
+        />
+        <TextField
+          label="Flow Name"
+          name="flow_name"
+          value={queryDetails.flow_name}
+          onChange={handleChange}
+          required
+          fullWidth
+          margin="normal"
+        />
+        <Button type="submit" variant="contained" color="primary" fullWidth>
+          Run Query
+        </Button>
+      </form>
+    </Box>
+  );
+};
+
+export default RunQuery;
+
+import React, { useState } from 'react';
+import { TextField, Button, Typography, Box } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { runQuery } from '../redux/actions/queryActions';
+
+const RunQuery = () => {
+  const [queryDetails, setQueryDetails] = useState({
+    env_name: '',
+    db_name: '',
+    flow_name: ''
+  });
+
+  const dispatch = useDispatch();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    dispatch(runQuery(queryDetails));
   };
 
   const handleChange = (e) => {
@@ -380,7 +441,7 @@ export const runQuery = (queryDetails) => async (dispatch) => {
 
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Typography, Box } from '@material-ui/core';
+import { Typography, Box } from '@mui/material';
 
 const QueryStatus = () => {
   const { status, error } = useSelector((state) => state.query);
