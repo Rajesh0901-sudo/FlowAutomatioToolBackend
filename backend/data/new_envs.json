@@ -26,14 +26,20 @@
         "db_host": "illnqw8329",
         "service_name": "CHRDB8392"
     },
+    "illnqw8384": {
+        "db_user_name": "ABPAPP1",
+        "db_password": "ABPAPP1",
+        "db_host": "illnqw8317",
+        "service_name": "CHRDB8384"
+    },
+    "test_env": {
+        "db_user_name": "updated_user"
+    },
     "illnqw8377": {
         "db_user_name": "illnqw8378",
         "db_password": "illnqw8378",
         "db_host": "illnqw8378",
         "service_name": "illnqw8378",
         "new_service_name": "illnqw8378"
-    },
-    "test_env": {
-        "db_user_name": "updated_user"
     }
 }

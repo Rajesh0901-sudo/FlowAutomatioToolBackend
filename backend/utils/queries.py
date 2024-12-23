@@ -46,7 +46,8 @@ class QueryExecutor:
         query_preparer = QueryPreparer()
         queries = query_preparer.prepare_queries(db_name)
 
-        for query in queries:
+        for queryTuple in queries:
+            tableName,query = queryTuple
             result = session.execute(text(query))
             rows = result.fetchall()
             column_names = result.keys()
@@ -57,4 +58,4 @@ class QueryExecutor:
             for row in rows:
                 print(row)
 
-            save_results_to_docx(db_name, flow_name, column_names, rows)
+            save_results_to_docx(db_name, tableName, column_names, rows)
