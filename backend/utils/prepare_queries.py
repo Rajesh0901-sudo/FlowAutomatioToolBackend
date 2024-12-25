@@ -32,12 +32,18 @@ class QueryPreparer:
     def prepare_queries(self,db_name):
         customer_details = self.load_customers()
         queries = []
-        customer_id = customer_details.get('CreateCustomerResponse', {}).get('ID')
-        account_id = customer_details.get('CreateCustomerResponse', {}).get('customerAccountId')
+
+        print("preparing Query")
+
+        customer_id = customer_details.get('ID')
+        account_id = customer_details.get('customerAccountId')
+
+        
+        print("preparing User data-",customer_id,account_id)
 
         if customer_id and db_name=='oms' :
             query1 = f"select CTDB_CRE_DATETIME, ORDER_UNIT_ID, ORDER_ID, STATUS, ACTION_TYPE, AP_ID, reason_id, customer_id from tborder_action where customer_id = '{customer_id}' order by CTDB_CRE_DATETIME asc"
-            query2 = f"select CHARGE_ID, CTDB_CRE_DATETIME, TYPE, DESCRIPTION, ACTUAL_PRICE, ORIGINAL_PRICE from tbbilling_Charge where ap_item_id in (select ap_id from tbap_price_plan where order_Action_id='21814') order by description desc"
+            query2 = f"select CHARGE_ID, CTDB_CRE_DATETIME, TYPE, DESCRIPTION, ACTUAL_PRICE, ORIGINAL_PRICE from tbbilling_Charge where ap_item_id in (select ap_id from tbap_price_plan where order_Action_id in (select ORDER_UNIT_ID from tborder_action where customer_id = '{customer_id}' order by CTDB_CRE_DATETIME desc FETCH FIRST 1 ROWS ONLY)) order by description desc"
 
             queries.append(('tborder_action', query1))
             queries.append(('tbbilling_Charge', query2))

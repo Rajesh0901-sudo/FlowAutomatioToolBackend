@@ -19,11 +19,12 @@ class Database:
 
         config_manager = ConfigManager()
         envConfFile = config_manager.load_env_config(self.env_name)
+
         if not envConfFile:
             print("env file not found")
             return None
 
-        print(type(envConfFile['db_user_name']), envConfFile['db_user_name'])
+        print(type(envConfFile['db_host']), envConfFile['service_name'])
         oracledb.init_oracle_client(lib_dir="C:\\Program Files (x86)\\oracle\\instantclient_23_6")
 
 
@@ -61,21 +62,36 @@ class Database:
        
 
     def run_queries(self, db_name,flow_name):
-        self.get_db_session('oms')
-        query_executor = QueryExecutor()
 
-        if self.omsSession:
-            query_executor.execute_queries(self.omsSession, 'oms',flow_name)
-            self.omsSession.close()
-            print("Closed oms session")
-        else:
-            print("Failed to create a oms database session")
+        try:
+            self.get_db_session('oms')
+            query_executor = QueryExecutor()
 
-        self.get_db_session('abp')
-        if self.abpSession:
-            query_executor.execute_queries(self.abpSession, 'abp',flow_name)
-            self.abpSession.close()
-            print("Closed abp session")
-        else:
-            print("Failed to create a abp database session")
 
+            if self.omsSession:
+                query_executor.execute_queries(self.omsSession, 'oms',flow_name)
+
+            else:
+                print("Failed to create a oms database session")
+
+
+            self.get_db_session('abp')
+            if self.abpSession:
+                query_executor.execute_queries(self.abpSession, 'abp',flow_name)
+
+            else:
+                print("Failed to create a abp database session")
+        except Exception as e:
+            print("An error occured while running Queries. Error-",e)
+        
+        finally:
+            if self.omsSession:
+                self.omsSession.close()
+                print("Closed oms session")
+            else:
+                print("No OMS Session Found")
+            if self.abpSession:
+                self.abpSession.close()
+                print("Closed abp session")
+            else:
+                print("No ABP Session Found")

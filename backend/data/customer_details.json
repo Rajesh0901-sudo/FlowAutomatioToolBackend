@@ -1,10 +1,4 @@
 {
-  "CreateCustomerResponse": {
-    "customerAddressId": "268435689",
-    "individualId": "2412232249",
-    "customerBillSpecId": "1000002236",
-    "customerAccountId": "1000002236",
-    "name": "Roo AutoREST Erys",
-    "ID": "1000006239"
-  }
+    "customerAccountId": "1000002250",
+    "ID": "1000006271"
 }

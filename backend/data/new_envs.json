@@ -6,40 +6,14 @@
         "service_name": "CHRDB7936",
         "new_service_name": "CHRDB7936"
     },
-    "illnqw7946": {
-        "db_user_name": "OMS1OMS",
-        "db_password": "OMS1OMS",
-        "db_host": "illnqw7974",
-        "service_name": "CHRDB7936",
-        "new_service_name": "CHRDB7936"
-    },
-    "illnqw8378": {
-        "db_user_name": "OMS1OMS",
-        "db_password": "OMS1OMS",
-        "db_host": "illnqw8327",
-        "service_name": "CHRDB8378",
-        "new_service_name": "CHRDB8378"
-    },
-    "illnqw8392": {
-        "db_user_name": "OMS1OMS",
-        "db_password": "OMS1OMS",
-        "db_host": "illnqw8329",
-        "service_name": "CHRDB8392"
+    "illnqw8375": {
+        "env_name": "illnqw8375",
+        "db_host": "illnqw8323",
+        "service_name": "CHRDB8375"
     },
     "illnqw8384": {
-        "db_user_name": "ABPAPP1",
-        "db_password": "ABPAPP1",
-        "db_host": "illnqw8317",
-        "service_name": "CHRDB8384"
-    },
-    "test_env": {
-        "db_user_name": "updated_user"
-    },
-    "illnqw8377": {
-        "db_user_name": "illnqw8378",
-        "db_password": "illnqw8378",
-        "db_host": "illnqw8378",
-        "service_name": "illnqw8378",
-        "new_service_name": "illnqw8378"
+        "env_name": "illnqw8384",
+        "db_host": "illnqw8323",
+        "service_name": "CHRDB8375"
     }
 }
