@@ -70,7 +70,7 @@ class Database:
 
        
 
-    def run_queries(self, db_name,flow_name):
+    def run_queries(self, db_name,flow_name,document_path,document_name):
 
         try:
             self.get_db_session('oms')
@@ -78,7 +78,7 @@ class Database:
 
 
             if self.omsSession:
-                query_executor.execute_queries(self.omsSession, 'oms',flow_name)
+                query_executor.execute_queries(self.omsSession, 'oms',flow_name,document_path,document_name)
 
             else:
                 print("Failed to create a oms database session")
@@ -86,7 +86,7 @@ class Database:
 
             self.get_db_session('abp')
             if self.abpSession:
-                query_executor.execute_queries(self.abpSession, 'abp',flow_name)
+                query_executor.execute_queries(self.abpSession, 'abp',flow_name,document_path,document_name)
 
             else:
                 print("Failed to create a abp database session")

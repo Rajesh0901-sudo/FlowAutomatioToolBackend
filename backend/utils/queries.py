@@ -36,7 +36,7 @@ class QueryExecutor:
             print("an error occurred while opening query_file", e)
             return None
 
-    def execute_queries(self, session, db_name, flow_name):
+    def execute_queries(self, session, db_name, flow_name,document_path,document_name):
         if not session:
             print("No db session exists")
             return 0
@@ -58,4 +58,4 @@ class QueryExecutor:
             for row in rows:
                 print(row)
 
-            save_results_to_docx(db_name, tableName, column_names, rows)
+            save_results_to_docx(db_name, tableName, column_names, rows,document_path,document_name)
