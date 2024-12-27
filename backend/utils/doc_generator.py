@@ -5,6 +5,13 @@ from docx.oxml.ns import qn
 from utils.check_existing_file import check_file_status
 import os
 
+def make_file_path(folder_path,file_name):
+    if not os.path.exists(folder_path):
+        os.makedirs(folder_path)
+    
+    file_path = os.path.join(folder_path,file_name)
+
+    return file_path
 
 def save_results_to_docx(db_name,tableName,column_names, rows,folder_path, file_name):
 
@@ -23,13 +30,10 @@ def save_results_to_docx(db_name,tableName,column_names, rows,folder_path, file_
         print(response)
         return 0
     
-    if not os.path.exists(folder_path):
-        os.makedirs(folder_path)
-    
-    file_path = os.path.join(folder_path,file_name)
-
-
+    # checking the directory and making file path
+    file_path = make_file_path(folder_path,file_name)
     if_exisiting_doc = check_file_status(file_path)
+
 
     print("File Path",file_path," if Existing-",if_exisiting_doc)
 
