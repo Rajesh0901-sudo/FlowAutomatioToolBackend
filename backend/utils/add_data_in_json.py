@@ -23,8 +23,8 @@ class DataManager:
     def add_env_config(self, env_name, configurations):
         envs_file = "./data/new_envs.json"
         envs = self.load_json(envs_file)
-        if env_name in envs:
-            return {"error": "Environment already exists"}
+        #if env_name in envs:
+        #    return {"error": "Environment already exists"}
         envs[env_name] = configurations
         self.save_json(envs_file, envs)
         return {"message": "Environment added successfully"}
