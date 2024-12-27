@@ -4,6 +4,9 @@ import oracledb
 from sqlalchemy.orm import sessionmaker
 from utils.config import ConfigManager
 from utils.queries import QueryExecutor
+import os
+
+
 
 class Database:
     def __init__(self, env_name):
@@ -23,9 +26,15 @@ class Database:
         if not envConfFile:
             print("env file not found")
             return None
+        
+        dirname = os.path.dirname(__file__)
+        print(dirname)
+        oracle_client_file = os.path.join(dirname, '../../../Oracle_Instant_Client\instantclient_23_6')  
+        print(oracle_client_file)
+
 
         print(type(envConfFile['db_host']), envConfFile['service_name'])
-        oracledb.init_oracle_client(lib_dir="C:\\Program Files (x86)\\oracle\\instantclient_23_6")
+        oracledb.init_oracle_client(lib_dir=oracle_client_file)
 
 
         if db_name == 'oms':
