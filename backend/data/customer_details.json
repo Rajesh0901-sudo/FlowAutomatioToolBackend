@@ -1,13 +1,4 @@
 {
-    "CreateCustomerResponse": {
-        "individualId": "241202220",
-        "customerBillSpecId": "1000000203",
-        "customerAddressId": "268435929",
-        "customerAccountId": "1000000203",
-        "name": "Roo AutoREST Erys",
-        "ID": "1000000438"
-    },
-    "env_name": "8378",
-    "flow_name": "provide",
-    "db_name": "oms"
+    "customerAccountId": "1000002250",
+    "ID": "1000006271"
 }
