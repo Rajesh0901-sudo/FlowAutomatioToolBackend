@@ -79,5 +79,3 @@ class QueryExecutor:
                 print(row)
 
             save_results_to_docx(db_name, tableName, column_names, rows,document_path,document_name)
-
-            return [tableName, column_names, rows]
