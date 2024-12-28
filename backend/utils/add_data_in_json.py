@@ -35,3 +35,10 @@ class DataManager:
         data.update(customer_details)
         self.save_json(customer_details_file, data)
         return {"message": "Customer details added successfully"}
+    
+    def add_query_results(self, query_results_data):
+        query_results_file = "./data/query_results.json"
+        data = self.load_json(query_results_file)
+        data.update(query_results_file)
+        self.save_json(query_results_file, data)
+        return {"message": "query_results_ added successfully"}

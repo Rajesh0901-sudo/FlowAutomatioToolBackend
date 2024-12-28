@@ -36,12 +36,32 @@ class QueryExecutor:
             print("an error occurred while opening query_file", e)
             return None
 
+    def get_order_action_and_ap_id_details(self, session, db_name, flow_name,document_path,document_name):
+        if not session:
+            print("No db session exists")
+            return 0
+
+        print("session connected successfully")
+
+    def get_subscriber_details(self, session, db_name, flow_name,document_path,document_name):
+        if not session:
+            print("No db session exists")
+            return 0
+
+        print("session connected successfully")    
+
     def execute_queries(self, session, db_name, flow_name,document_path,document_name):
         if not session:
             print("No db session exists")
             return 0
 
         print("session connected successfully")
+
+        #try:
+        #    session.execute(text("ALTER SESSION SET READ_ONLY = TRUE"))
+        #    print("Session altered to read only")
+        #except Exception as e:
+        #    print("An Error Occured while altering session to read only",e)
 
         query_preparer = QueryPreparer()
         queries = query_preparer.prepare_queries(db_name)
@@ -59,3 +79,5 @@ class QueryExecutor:
                 print(row)
 
             save_results_to_docx(db_name, tableName, column_names, rows,document_path,document_name)
+
+            return [tableName, column_names, rows]
