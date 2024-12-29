@@ -1,8 +1,85 @@
 {
     "oms":{
         "provide":[
-            "select CTDB_CRE_DATETIME, ORDER_UNIT_ID, ORDER_ID, STATUS, ACTION_TYPE, AP_ID, reason_id, customer_id from tborder_action where customer_id = '1000000438' order by CTDB_CRE_DATETIME asc",
-            "select CHARGE_ID,CTDB_CRE_DATETIME,TYPE,DESCRIPTION,ACTUAL_PRICE,ORIGINAL_PRICE from tbbilling_Charge where ap_item_id in (select ap_id from tbap_price_plan where order_Action_id='2038') order by description desc"
+            {
+                "table_name":"tborder_action",
+                "query":"select * from tborder_action where customer_id = ':ID' order by CTDB_CRE_DATETIME DESC",
+                "params":["ID"]
+            }
+        ]
+    },
+    "abp":{
+        "provide":[
+            {
+                "table_name":"subscriber",
+                "query":"select * from subscriber where customer_id = ':ID' order by sys_creation_date desc",
+                "params":["ID"]
+            },
+            {
+                "table_name":"ar1_account",
+                "query":"select * from ar1_account where customer_no= ':ID' order by sys_creation_date desc",
+                "params":["ID"]
+            },
+            {
+                "table_name":"ar1_payment_details",
+                "params":["customerAccountId"],
+                "query":"select * from ar1_payment_details where account_id=':customerAccountId' order by sys_creation_date desc"
+            },
+            {
+                "table_name":"ar1_customer_credit",
+                "params":["customerAccountId"],
+                "query":"select * from ar1_customer_credit where account_id=':customerAccountId' order by sys_creation_date desc"
+            },
+            {
+                "table_name":"ar1_payment_details",
+                "params":["customerAccountId"],
+                "query":"select * from ar1_payment_details where account_id=':customerAccountId' order by sys_creation_date desc"
+            }, 
+            {
+                "table_name":"ar1_charges",
+                "params":["customerAccountId"],
+                "query":"select * from ar1_charges where account_id= ':customerAccountId' order by sys_creation_date desc"
+            },
+            {
+                "table_name":"AR3_ORDER_REFERENCE",
+                "params":["customerAccountId"],
+                "query":"select * from AR3_ORDER_REFERENCE a where ACCOUNT_ID = ':customerAccountId' order by SYS_CREATION_DATE desc"
+            },
+            {
+                "table_name":"bl1_rc_rates",
+                "params":["ID"],
+                "query":"select * from bl1_rc_rates where RECEIVER_CUSTOMER=':ID' order by sys_creation_date desc"
+            },
+            {
+                "table_name":"bl9_installment_plan",
+                "params":["ID"],
+                "query":"select * from bl9_installment_plan where customer_id= ':ID' order by sys_creation_date desc"
+            },
+            {
+                "table_name":"bl1_charge_request",
+                "params":["ID"],
+                "query":"Select count(*),CHARGE_CODE,AMOUNT from bl1_charge_request  where RECEIVER_CUSTOMER= ':ID' group by CHARGE_CODE,AMOUNT"
+            }
+        ]
+    },
+    "other":{
+        "provide":[
+            {
+                "table_name":"tbbilling_Charge",
+                "query":"select * from tbbilling_Charge where ap_item_id in (select ap_id from tbap_price_plan where order_Action_id = ':order_action_id' order by CTDB_CRE_DATETIME desc",
+                "params":["order_action_id"]
+            },
+            {
+                "table_name":"tbauto_request",
+                "params":["ap_id"],
+                "query":"select * from tbauto_request where STEP_INSTANCE_ID = ':ap_id'"
+            },
+            {
+                "table_name":"cm1_agreement_param",
+                "query":"select * from cm1_agreement_param where agreement_no=':subscriber_id' order by SYS_CREATION_DATE desc",
+                "params":["subscriber_id"]
+            }
         ]
     }
+    
 }

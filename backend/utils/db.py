@@ -74,8 +74,8 @@ class Database:
 
         try:
             self.get_db_session('oms')
+            
             query_executor = QueryExecutor()
-
 
             if self.omsSession:
                 query_executor.execute_queries(self.omsSession, 'oms',flow_name,document_path,document_name)
@@ -85,6 +85,7 @@ class Database:
 
 
             self.get_db_session('abp')
+
             if self.abpSession:
                 query_executor.execute_queries(self.abpSession, 'abp',flow_name,document_path,document_name)
 

@@ -64,7 +64,9 @@ class QueryExecutor:
         #    print("An Error Occured while altering session to read only",e)
 
         query_preparer = QueryPreparer()
-        queries = query_preparer.prepare_queries(db_name)
+        queries = query_preparer.prepare_queries(db_name,flow_name)
+
+        #queries = query_preparer.prepare_queries(db_name)
 
         for queryTuple in queries:
             tableName,query = queryTuple
@@ -73,9 +75,9 @@ class QueryExecutor:
             column_names = result.keys()
             print("Query executed successfully")
 
-            print(f"{' | '.join(column_names)}")
+            #print(f"{' | '.join(column_names)}")
 
-            for row in rows:
-                print(row)
+            #for row in rows:
+            #    print(row)
 
             save_results_to_docx(db_name, tableName, column_names, rows,document_path,document_name)
