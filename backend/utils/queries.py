@@ -4,6 +4,8 @@ from utils.doc_generator import save_results_to_docx
 import json
 import os
 from utils.prepare_queries import QueryPreparer
+from utils.prepare_queries_for_all_column import CSVQueryPreparer
+from utils.csv_file_generator import save_results_to_csv
 
 class QueryExecutor:
     def __init__(self):
@@ -50,7 +52,7 @@ class QueryExecutor:
 
         print("session connected successfully")    
 
-    def execute_queries(self, session, db_name, flow_name,document_path,document_name):
+    def execute_queries(self, session, db_name, flow_name,document_path,document_name,is_to_save_data_in_csv):
         if not session:
             print("No db session exists")
             return 0
@@ -64,15 +66,14 @@ class QueryExecutor:
         #    print("An Error Occured while altering session to read only",e)
 
         query_preparer = QueryPreparer()
-        queries = query_preparer.prepare_queries(db_name,flow_name)
-
-        #queries = query_preparer.prepare_queries(db_name)
+        queries = query_preparer.prepare_queries(db_name)
 
         for queryTuple in queries:
             tableName,query = queryTuple
             result = session.execute(text(query))
             rows = result.fetchall()
             column_names = result.keys()
+
             print("Query executed successfully")
 
             #print(f"{' | '.join(column_names)}")
@@ -81,3 +82,28 @@ class QueryExecutor:
             #    print(row)
 
             save_results_to_docx(db_name, tableName, column_names, rows,document_path,document_name)
+        
+
+        if is_to_save_data_in_csv:
+
+            query_preparer = CSVQueryPreparer()
+
+            queries = query_preparer.prepare_queries(db_name,flow_name)
+
+            for queryTuple in queries:
+                tableName,query = queryTuple
+                result = session.execute(text(query))
+                rows = result.fetchall()
+                column_names = result.keys()
+
+                #rows = []
+                #column_names = []
+                print("Query executed successfully")
+
+                #print(f"{' | '.join(column_names)}")
+
+                #for row in rows:
+                #    print(row)
+
+                save_results_to_csv(db_name, tableName, column_names, rows,document_path,document_name,flow_name)
+

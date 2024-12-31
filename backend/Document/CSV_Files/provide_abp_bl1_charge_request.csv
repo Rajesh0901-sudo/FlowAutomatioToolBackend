@@ -1,0 +1,4 @@
+COUNT(*),charge_code,amount
+35,EIPDEVICE,4.33
+1,EIPDEVICE,4.44
+1,EIPDEVICE,13.88

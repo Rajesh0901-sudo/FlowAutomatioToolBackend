@@ -3,6 +3,7 @@ from flask import Flask, request, jsonify
 from utils.add_data_in_json import DataManager
 from utils.db import Database
 from flask_cors import CORS, cross_origin
+from utils.handle_external_api import handle_external_api_method
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -57,6 +58,7 @@ def run_query_api():
     flow_name = data.get("flow_name")
     document_path = data.get("document_path")
     document_name =  data.get("document_name")
+    is_to_save_data_in_csv =  data.get("toTakeCsv")
 
 
     if not env_name or not db_name or not flow_name:
@@ -64,10 +66,26 @@ def run_query_api():
 
     try:
         db = Database(env_name)
-        db.run_queries(db_name, flow_name,document_path,document_name)
+        db.run_queries(db_name, flow_name,document_path,document_name,is_to_save_data_in_csv)
         return jsonify({"message": "queries executed successfully"})
     except Exception as e:
         return jsonify({"error": str(e)}), 400 
 
+
+@app.route('/run_query_external_api', methods=['POST'])
+def run_query_external_api():
+    data = request.json
+
+    #print(data)
+
+    if not data:
+        return jsonify({"error": "Missing data payload"}), 400
+    
+    query_response = handle_external_api_method(data)
+
+    return jsonify({"message": "queries executed successfully"})
+
+
+    
 if __name__ == "__main__":
     app.run(debug=True)

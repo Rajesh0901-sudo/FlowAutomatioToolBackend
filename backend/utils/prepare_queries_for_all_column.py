@@ -2,7 +2,7 @@
 import json
 import os
 
-class QueryPreparer:
+class CSVQueryPreparer:
     def __init__(self):
         self.customer_details_file = "./data/customer_details.json"
         self.query_details_file = "./data/queries.json"
