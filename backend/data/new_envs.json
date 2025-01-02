@@ -15,5 +15,10 @@
         "env_name": "illnqw8384",
         "db_host": "illnqw8323",
         "service_name": "CHRDB8375"
+    },
+    "illnqw7964": {
+        "env_name": "illnqw7964",
+        "db_host": "illnqw8279",
+        "service_name": "CHRDB7964"
     }
 }
