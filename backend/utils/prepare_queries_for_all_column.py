@@ -29,7 +29,7 @@ class CSVQueryPreparer:
         
         except Exception as e:
             print("an error occurred while opening query details files-", e)
-            return None
+            return None 
         
     def load_customers(self):
         if not self.file_exist(self.customer_details_file):
