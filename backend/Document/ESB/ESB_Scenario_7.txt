@@ -1,0 +1,402 @@
+{
+  "EstimatedBillServiceResponse": {
+    "dstSavings": 3600000,
+    "customerBillSpecs": [
+      {
+        "billDate": 1738792800000,
+        "billRequestDate": 1736373599000,
+        "billSpecID": "1000002646",
+        "totalAmountWithTax": 189.56,
+        "totalUCAmountX9": 0.00,
+        "totalServicesAmountWithTaxX9": 122.40,
+        "totalDevicesAmountWithTaxX9": 67.16,
+        "totalSmartWatchAmountWithTaxX9": 0.00,
+        "formattedBillDate": "02/06/2025",
+        "autoPayDateX9": "1740520800000",
+        "lineLevelDetailsX9": {
+          "lineDetails": [
+            {
+              "lineTypeX9": "Unlimited",
+              "totalNumOfLinesX9": "1",
+              "lineLevelTotalAmountX9": 45.00
+            },
+            {
+              "lineTypeX9": "Unlimited Plus",
+              "totalNumOfLinesX9": "1",
+              "lineLevelTotalAmountX9": 77.40
+            }
+          ]
+        },
+        "financialActivitiesX9": {
+          "charges": {
+            "additionalChargesTotal": 0.00
+          },
+          "credits": {
+            "remainingCreditBalanceX9": 0.00,
+            "creditsTotal": 0.00
+          }
+        },
+        "productBillSpecs": [
+          {
+            "productID": "26177",
+            "productLevel": "SUBSCRIBER",
+            "nickNameX9": "UNLPLUS287938",
+            "totalOCTaxAmount": 0.00,
+            "productOfferingIDX9": "92711031",
+            "productOfferingCodeX9": "Mobile_Unlimited_Plus",
+            "totalUCAmountX9": 0.00,
+            "btgRCWithoutDiscountWithTaxX9": 0.00,
+            "btgDiscountWithTaxX9": 0.00,
+            "totalServicesAmountWithTaxX9": 77.40,
+            "totalDevicesAmountWithTaxX9": 41.28,
+            "internationalUsageChargesX9": 0.00,
+            "domesticCallsX9": 0.00,
+            "domesticMessagesX9": 0.00,
+            "internationalCallsX9": 0.00,
+            "internationalMessagesX9": 0.00,
+            "roamingCallsX9": 0.00,
+            "roamingMessagesX9": 0.00,
+            "roamingUsedGBX9": 0.00,
+            "totalSmartWatchAmountWithTaxX9": 0.00,
+            "roamingUsedMBX9": 0.00,
+            "totalValueAddedChargesX9": 0.00,
+            "assignProdIDX9": "100815661",
+            "deviceSkuX9": "190199220737",
+            "intlTotalCharges": {
+              "nonUSDestUsageChargesX9": 0.00,
+              "roamingUsageChargesX9": 0.00,
+              "totalGlobalDayPassX9": 0.00,
+              "totalGlobalDayPassExtraX9": 0.00
+            },
+            "totalOCAmount": 18.05,
+            "totalRCAmount": 100.63,
+            "totalRCTaxAmount": 0.00,
+            "billingOfferBills": [
+              {
+                "deviceNameX9": "iPhone 11 128GB Purple",
+                "crossProductDiscount": false,
+                "oneTimeCalculatedPrices": [
+                  {
+                    "catalogID": "8415197",
+                    "chargeActionType": "CHARGE",
+                    "formattedEffectiveDate": "01/08/2025",
+                    "name": "Device installments",
+                    "finalAmount": 18.05,
+                    "finalTaxAmount": 0.00,
+                    "currency": "USD"
+                  }
+                ],
+                "chargeCategoryX9": "Device",
+                "cxtExternalIdX9": "C-ceoja17f86h5jgy7pwqqzw7c7",
+                "billLayoutCategoryX9": "Device",
+                "remDppBalanceX9": 631.94,
+                "remNumofInstX9": "35",
+                "totalNumofDevInstX9": "36",
+                "currentBillInstX9": "2",
+                "action": "Update",
+                "name": "Device Price"
+              },
+              {
+                "crossProductDiscount": false,
+                "recurringCalculatedPrices": [
+                  {
+                    "catalogID": "93776461",
+                    "chargeActionType": "DISCOUNT",
+                    "arrearChargeIndX9": false,
+                    "effectiveEndDate": 1741125600000,
+                    "effectiveStartDate": 1738792800000,
+                    "prorationIndicator": false,
+                    "formattedEffectiveStartDate": "02/06/2025",
+                    "formattedEffectiveEndDate": "03/05/2025",
+                    "finalAmount": -15.01,
+                    "name": "Unlimited Promotion",
+                    "finalTaxAmount": 0.00,
+                    "currency": "USD"
+                  },
+                  {
+                    "catalogID": "93776461",
+                    "chargeActionType": "DISCOUNT",
+                    "arrearChargeIndX9": true,
+                    "effectiveEndDate": 1738706400000,
+                    "effectiveStartDate": 1736287200000,
+                    "prorationIndicator": true,
+                    "formattedEffectiveStartDate": "01/08/2025",
+                    "formattedEffectiveEndDate": "02/05/2025",
+                    "finalAmount": -14.04,
+                    "name": "Unlimited Promotion",
+                    "finalTaxAmount": 0.00,
+                    "currency": "USD"
+                  }
+                ],
+                "promoNameX9": "Unlimited Promotion",
+                "promoExpDateX9": "1754341200000",
+                "chargeCategoryX9": "Promotion",
+                "cxtExternalIdX9": "C-ceoja17f86h5jgy7pwqqzw7c8",
+                "billLayoutCategoryX9": "PlanServicePromo",
+                "promoIDX9": "PR1086",
+                "action": "Update",
+                "name": "Unlimited Plus Promotion"
+              },
+              {
+                "crossProductDiscount": false,
+                "recurringCalculatedPrices": [
+                  {
+                    "catalogID": "94284061",
+                    "chargeActionType": "CHARGE",
+                    "arrearChargeIndX9": false,
+                    "effectiveEndDate": 1741125600000,
+                    "effectiveStartDate": 1738792800000,
+                    "prorationIndicator": false,
+                    "formattedEffectiveStartDate": "02/06/2025",
+                    "formattedEffectiveEndDate": "03/05/2025",
+                    "finalAmount": 0.00,
+                    "name": "Anytime Upgrade",
+                    "finalTaxAmount": 0.00,
+                    "currency": "USD"
+                  },
+                  {
+                    "catalogID": "94284061",
+                    "chargeActionType": "CHARGE",
+                    "arrearChargeIndX9": true,
+                    "effectiveEndDate": 1738706400000,
+                    "effectiveStartDate": 1736287200000,
+                    "prorationIndicator": true,
+                    "formattedEffectiveStartDate": "01/08/2025",
+                    "formattedEffectiveEndDate": "02/05/2025",
+                    "finalAmount": 0.00,
+                    "name": "Anytime Upgrade",
+                    "finalTaxAmount": 0.00,
+                    "currency": "USD"
+                  }
+                ],
+                "chargeCategoryX9": "AddOn",
+                "cxtExternalIdX9": "Pf86080b9-9616-4707-a8e3-f7f9f4b91e8b",
+                "billLayoutCategoryX9": "AddOn",
+                "action": "Update",
+                "name": "Anytime Upgrade Charge"
+              },
+              {
+                "crossProductDiscount": false,
+                "recurringCalculatedPrices": [
+                  {
+                    "catalogID": "88509135",
+                    "chargeActionType": "CHARGE",
+                    "arrearChargeIndX9": false,
+                    "effectiveEndDate": 1741125600000,
+                    "effectiveStartDate": 1738792800000,
+                    "prorationIndicator": false,
+                    "formattedEffectiveStartDate": "02/06/2025",
+                    "formattedEffectiveEndDate": "03/05/2025",
+                    "finalAmount": 12.00,
+                    "name": "SMPP2",
+                    "finalTaxAmount": 0.00,
+                    "currency": "USD"
+                  },
+                  {
+                    "catalogID": "88509135",
+                    "chargeActionType": "CHARGE",
+                    "arrearChargeIndX9": true,
+                    "effectiveEndDate": 1738706400000,
+                    "effectiveStartDate": 1736287200000,
+                    "prorationIndicator": true,
+                    "formattedEffectiveStartDate": "01/08/2025",
+                    "formattedEffectiveEndDate": "02/05/2025",
+                    "finalAmount": 11.23,
+                    "name": "SMPP2",
+                    "finalTaxAmount": 0.00,
+                    "currency": "USD"
+                  }
+                ],
+                "chargeCategoryX9": "Insurance",
+                "cxtExternalIdX9": "C-ceoja17f86h4jgy7pwqqzw788",
+                "billLayoutCategoryX9": "Insurance",
+                "action": "Update",
+                "name": "Spectrum Mobile Protection Plan - Tier 2"
+              },
+              {
+                "crossProductDiscount": false,
+                "recurringCalculatedPrices": [
+                  {
+                    "catalogID": "92704631",
+                    "chargeActionType": "CHARGE",
+                    "arrearChargeIndX9": false,
+                    "effectiveEndDate": 1741125600000,
+                    "effectiveStartDate": 1738792800000,
+                    "prorationIndicator": false,
+                    "formattedEffectiveStartDate": "02/06/2025",
+                    "formattedEffectiveEndDate": "03/05/2025",
+                    "finalAmount": 55.00,
+                    "name": "Unlimited Plus",
+                    "finalTaxAmount": 0.00,
+                    "currency": "USD"
+                  },
+                  {
+                    "catalogID": "92704631",
+                    "chargeActionType": "CHARGE",
+                    "arrearChargeIndX9": true,
+                    "effectiveEndDate": 1738706400000,
+                    "effectiveStartDate": 1736287200000,
+                    "prorationIndicator": true,
+                    "formattedEffectiveStartDate": "01/08/2025",
+                    "formattedEffectiveEndDate": "02/05/2025",
+                    "finalAmount": 51.45,
+                    "name": "Unlimited Plus",
+                    "finalTaxAmount": 0.00,
+                    "currency": "USD"
+                  }
+                ],
+                "chargeCategoryX9": "PP",
+                "cxtExternalIdX9": "P89f9a3c2-f116-47c1-a632-89184c742429",
+                "billLayoutCategoryX9": "Unlimited Plus",
+                "action": "Update",
+                "name": "Mobile Unlimited Plus Plan (UNLSP004)"
+              }
+            ],
+            "lineOfBusiness": "WS",
+            "totalAmount": 118.68,
+            "totalTaxAmount": 0.00,
+            "deviceTypeX9": "Phone",
+            "serviceID": "9656406076",
+            "productOfferingName": "Unlimited Plus",
+            "name": "Mobile Product"
+          },
+          {
+            "productID": "26147",
+            "productLevel": "SUBSCRIBER",
+            "nickNameX9": "UNLDPromo2187619",
+            "totalOCTaxAmount": 0.00,
+            "productOfferingIDX9": "88480735",
+            "productOfferingCodeX9": "Mobile_Unlimited",
+            "totalUCAmountX9": 0.00,
+            "btgRCWithoutDiscountWithTaxX9": 0.00,
+            "btgDiscountWithTaxX9": 0.00,
+            "totalServicesAmountWithTaxX9": 45.00,
+            "totalDevicesAmountWithTaxX9": 25.88,
+            "internationalUsageChargesX9": 0.00,
+            "domesticCallsX9": 0.00,
+            "domesticMessagesX9": 0.00,
+            "internationalCallsX9": 0.00,
+            "internationalMessagesX9": 0.00,
+            "roamingCallsX9": 0.00,
+            "roamingMessagesX9": 0.00,
+            "roamingUsedGBX9": 0.00,
+            "totalSmartWatchAmountWithTaxX9": 0.00,
+            "roamingUsedMBX9": 0.00,
+            "totalValueAddedChargesX9": 0.00,
+            "assignProdIDX9": "100815331",
+            "deviceSkuX9": "190199220577",
+            "intlTotalCharges": {
+              "nonUSDestUsageChargesX9": 0.00,
+              "roamingUsageChargesX9": 0.00,
+              "totalGlobalDayPassX9": 0.00,
+              "totalGlobalDayPassExtraX9": 0.00
+            },
+            "totalOCAmount": 13.88,
+            "totalRCAmount": 57.00,
+            "totalRCTaxAmount": 0.00,
+            "billingOfferBills": [
+              {
+                "crossProductDiscount": false,
+                "recurringCalculatedPrices": [
+                  {
+                    "catalogID": "88509135",
+                    "chargeActionType": "CHARGE",
+                    "arrearChargeIndX9": false,
+                    "effectiveEndDate": 1741125600000,
+                    "effectiveStartDate": 1738792800000,
+                    "prorationIndicator": false,
+                    "formattedEffectiveStartDate": "02/06/2025",
+                    "formattedEffectiveEndDate": "03/05/2025",
+                    "finalAmount": 12.00,
+                    "name": "SMPP2",
+                    "finalTaxAmount": 0.00,
+                    "currency": "USD"
+                  }
+                ],
+                "chargeCategoryX9": "Insurance",
+                "cxtExternalIdX9": "oja17f86h5jgy7pwqqzw7b21",
+                "billLayoutCategoryX9": "Insurance",
+                "action": "Update",
+                "name": "Spectrum Mobile Protection Plan - Tier 2"
+              },
+              {
+                "deviceNameX9": "iPhone 11 64GB Red",
+                "crossProductDiscount": false,
+                "oneTimeCalculatedPrices": [
+                  {
+                    "catalogID": "8415197",
+                    "chargeActionType": "CHARGE",
+                    "formattedEffectiveDate": "01/06/2025",
+                    "name": "Device installments",
+                    "finalAmount": 13.88,
+                    "finalTaxAmount": 0.00,
+                    "currency": "USD"
+                  }
+                ],
+                "chargeCategoryX9": "Device",
+                "cxtExternalIdX9": "C-ceoja17f86h5jgy7pwqqzw7c7",
+                "billLayoutCategoryX9": "Device",
+                "remDppBalanceX9": 486.11,
+                "remNumofInstX9": "35",
+                "totalNumofDevInstX9": "36",
+                "currentBillInstX9": "2",
+                "action": "Update",
+                "name": "Device Price"
+              },
+              {
+                "crossProductDiscount": false,
+                "recurringCalculatedPrices": [
+                  {
+                    "catalogID": "88456235",
+                    "chargeActionType": "CHARGE",
+                    "arrearChargeIndX9": false,
+                    "effectiveEndDate": 1741125600000,
+                    "effectiveStartDate": 1738792800000,
+                    "prorationIndicator": false,
+                    "formattedEffectiveStartDate": "02/06/2025",
+                    "formattedEffectiveEndDate": "03/05/2025",
+                    "finalAmount": 45.00,
+                    "name": "Mobile Unlimited Plan",
+                    "finalTaxAmount": 0.00,
+                    "currency": "USD"
+                  }
+                ],
+                "chargeCategoryX9": "PP",
+                "cxtExternalIdX9": "P6f56ca62-59bf-46a3-b92b-7d15da288841",
+                "billLayoutCategoryX9": "Unlimited",
+                "action": "Update",
+                "name": "Mobile Unlimited Plan (UNLSP001)"
+              }
+            ],
+            "lineOfBusiness": "WS",
+            "totalAmount": 70.88,
+            "totalTaxAmount": 0.00,
+            "deviceTypeX9": "Phone",
+            "serviceID": "9656338636",
+            "productOfferingName": "Unlimited",
+            "name": "Mobile Product"
+          }
+        ],
+        "totalOCAmountWithTax": 31.93,
+        "totalRCAmountWithTax": 157.63,
+        "isCustomerReratedAfterUpgradeX9": "Y",
+        "previousBalanceAmountX9": 0.00,
+        "totalFinancialActivitiesAmountWithTaxX9": 0.00,
+        "pastDueIncInLastBillX9": 0.00,
+        "totalAmtCurrMnthChgsX9": 189.56,
+        "esbDisplayIndX9": true,
+        "formattedCycleStartDate": "01/06/2025",
+        "formattedCycleEndDate": "02/05/2025",
+        "formattedBillRequestDate": "01/08/2025",
+        "totalOCAmount": 31.93,
+        "totalRCAmount": 157.63,
+        "totalAmount": 189.56,
+        "cycleStartDate": 1736114400000,
+        "cycleEndDate": 1738706400000,
+        "remainingDaysTillClosure": "28",
+        "currency": "USD"
+      }
+    ],
+    "offset": 7200000
+  }
+}

@@ -59,7 +59,8 @@ class QueryPreparer:
             query7 = f"select EIP_ID,Customer_ID,subscriber_id,Total_inst_no, DEVICE_PLAN_START_DATE,plan_status,total_amount,TOTAL_BILLED_AMOUNT,BILLED_INST_NO from bl9_installment_plan where customer_id='{customer_id}' order by sys_creation_date desc"
             query8 = f"select EIP_ID,BILLED_INST_NO,exchanged_eip,DPP_TYPE,OFFER_ID,getdynacs(DYNAMIC_ATTRIBUTES,'IMEI') imei,ACCELERATE_IND,getdynacs(DYNAMIC_ATTRIBUTES,'accReason') AccReason,getdynacs(DYNAMIC_ATTRIBUTES,'Remaining balance') RemBalance,OFFER_INSTANCE_ID from bl9_installment_plan  where customer_id='{customer_id}' order by sys_creation_date desc"
             query9 = f"select CHARGE_CODE, EFFECTIVE_DATE,EXPIRATION_DATE, AMOUNT, SERVICE_RECEIVER_ID, RECEIVER_CUSTOMER, PAY_CHANNEL_NO, CYCLE_CODE, getdyna(dynamic_attributes,'IMEI') as IMEI from bl1_rc_rates where RECEIVER_CUSTOMER='{customer_id}' order by sys_creation_date desc"
-            query10 = f"Select count(*),CHARGE_CODE,AMOUNT from bl1_charge_request  where RECEIVER_CUSTOMER= '{customer_id}' group by CHARGE_CODE,AMOUNT"
+            query10 = f"select CHARGE_CODE, AMOUNT,SERVICE_RECEIVER_ID, RECEIVER_CUSTOMER, getdyna(dynamic_attributes,'Immediate First MRC per BO') as IFM_per_BO, getdyna(dynamic_attributes,'L9 Offer Connect Date') as L9OCD,  getdyna(dynamic_attributes,'Offer connect Date') as OCD from bl1_rc_rates where RECEIVER_CUSTOMER='{customer_id}' order by sys_creation_date desc"
+            query11 = f"Select count(*),CHARGE_CODE,AMOUNT from bl1_charge_request  where RECEIVER_CUSTOMER= '{customer_id}' group by CHARGE_CODE,AMOUNT"
 
 
             queries.append(('subscriber', query1))
@@ -71,7 +72,8 @@ class QueryPreparer:
             queries.append(('bl9_installment_plan', query7))
             queries.append(('bl9_installment_plan', query8))
             queries.append(('bl1_rc_rates', query9))
-            queries.append(('bl1_charge_request', query10))
+            queries.append(('bl1_rc_rates', query10))
+            queries.append(('bl1_charge_request', query11))
 
 
         return queries
