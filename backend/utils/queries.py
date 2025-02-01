@@ -9,7 +9,7 @@ from .csv_file_generator import save_results_to_csv
 
 class QueryExecutor:
     def __init__(self):
-        self.query_file = "./data/queries.json"
+        self.query_file = os.path.join(os.path.dirname(__file__), "data", "queries.json")
 
     def query_file_exist(self):
         try:

@@ -21,7 +21,7 @@ class DataManager:
             print(f"An error occurred while saving {file_path}: {e}")
 
     def add_env_config(self, env_name, configurations):
-        envs_file = "./data/new_envs.json"
+        envs_file = os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'new_envs.json')
         envs = self.load_json(envs_file)
         #if env_name in envs:
         #    return {"error": "Environment already exists"}
@@ -30,14 +30,14 @@ class DataManager:
         return {"message": "Environment added successfully"}
 
     def add_customer_details(self, customer_details):
-        customer_details_file = "./data/customer_details.json"
+        customer_details_file = os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'customer_details.json')
         data = self.load_json(customer_details_file)
         data.update(customer_details)
         self.save_json(customer_details_file, data)
         return {"message": "Customer details added successfully"}
     
     def add_query_results(self, query_results_data):
-        query_results_file = "./data/query_results.json"
+        query_results_file = os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'query_results.json')
         data = self.load_json(query_results_file)
         data.update(query_results_file)
         self.save_json(query_results_file, data)

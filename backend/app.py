@@ -5,8 +5,6 @@ from .utils.db import Database
 from flask_cors import CORS, cross_origin
 from .utils.handle_external_api import handle_external_api_method
 import os
-import webbrowser
-import threading
 
 app = Flask(__name__, static_folder='../frontendNew/flow_automation_front_end/build')
 cors = CORS(app)
@@ -97,9 +95,6 @@ def serve(path):
     else:
         return send_from_directory(app.static_folder, 'index.html')
 
-def open_browser():
-    webbrowser.open_new('http://127.0.0.1:5000')
     
 if __name__ == "__main__":
-    threading.Timer(1,open_browser).start()
     app.run(debug=True)

@@ -4,7 +4,7 @@ import os
 
 class ConfigManager:
     def __init__(self):
-        self.envs_file = "./data/new_envs.json"
+        self.envs_file = os.path.join(os.path.dirname(__file__), "data", "new_envs.json")
 
     def env_file_exist(self):
         try:

@@ -4,7 +4,7 @@ import os
 
 class QueryPreparer:
     def __init__(self):
-        self.customer_details_file = "./data/customer_details.json"
+        self.customer_details_file = os.path.join(os.path.dirname(__file__), "..", "data", "customer_details.json")
 
     def file_exist(self):
         try:

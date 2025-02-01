@@ -4,8 +4,8 @@ import os
 
 class CSVQueryPreparer:
     def __init__(self):
-        self.customer_details_file = "./data/customer_details.json"
-        self.query_details_file = "./data/queries.json"
+        self.customer_details_file = os.path.join(os.path.dirname(__file__), "data", "customer_details.json")
+        self.query_details_file = os.path.join(os.path.dirname(__file__), "data", "queries.json")
 
     def file_exist(self,file_name):
         try:

@@ -30,7 +30,7 @@ class Database:
         
         dirname = os.path.dirname(__file__)
         print(dirname)
-        oracle_client_file = os.path.join(dirname, '../../Oracle_Instant_Client\instantclient_23_6')  
+        oracle_client_file = os.path.join(dirname, '..', '..', 'Oracle_Instant_Client', 'instantclient_23_6')
         print(oracle_client_file)
 
 
