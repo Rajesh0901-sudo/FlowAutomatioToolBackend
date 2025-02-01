@@ -1,48 +1,43 @@
+# backend.spec
+# -*- mode: python ; coding: utf-8 -*-
 
+block_cipher = None
 
-
-
-
-
-
-
-from flask import Flask, request, jsonify, send_from_directory
-from utils.add_data_in_json import DataManager
-from utils.db import Database
-from flask_cors import CORS, cross_origin
-import os
-
-app = Flask(__name__, static_folder='../frontend/flow_automation_front_end/build')
-cors = CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
-
-data_manager = DataManager()
-
-@app.route('/add_env', methods=['POST'])
-def add_env():
-    data = request.json
-    # Your existing code to handle add_env
-    return jsonify({"message": "Environment added successfully"})
-
-@app.route('/add_customer', methods=['POST'])
-def add_customer():
-    data = request.json
-    # Your existing code to handle add_customer
-    return jsonify({"message": "Customer added successfully"})
-
-@app.route('/run_query_api', methods=['POST'])
-def run_query_api():
-    data = request.json
-    # Your existing code to handle run_query_api
-    return jsonify({"message": "Query executed successfully"})
-
-@app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
-def serve(path):
-    if path != "" and os.path.exists(os.path.join(app.static_folder, path)):
-        return send_from_directory(app.static_folder, path)
-    else:
-        return send_from_directory(app.static_folder, 'index.html')
-
-if __name__ == "__main__":
-    app.run(debug=True)
+a = Analysis(
+    ['backend/app.py'],
+    pathex=['.'],
+    binaries=[],
+    datas=[('backend/**/*', 'backend'), ('frontend/flow_automation_front_end/build/**/*', 'frontend/flow_automation_front_end/build')],
+    hiddenimports=[],
+    hookspath=[],
+    runtime_hooks=[],
+    excludes=[],
+    win_no_prefer_redirects=False,
+    win_private_assemblies=False,
+    cipher=block_cipher,
+)
+pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
+exe = EXE(
+    pyz,
+    a.scripts,
+    [],
+    exclude_binaries=True,
+    name='backend',
+    debug=False,
+    bootloader_ignore_signals=False,
+    strip=False,
+    upx=True,
+    upx_exclude=[],
+    runtime_tmpdir=None,
+    console=True,
+)
+coll = COLLECT(
+    exe,
+    a.binaries,
+    a.zipfiles,
+    a.datas,
+    strip=False,
+    upx=True,
+    upx_exclude=[],
+    name='backend',
+)
