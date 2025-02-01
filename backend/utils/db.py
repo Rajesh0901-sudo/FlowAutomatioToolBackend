@@ -13,6 +13,7 @@ class Database:
         self.env_name = env_name
         self.omsSession = None
         self.abpSession = None
+        self.crmSession = None
         
 
     def get_db_session(self,db_name):
@@ -45,6 +46,18 @@ class Database:
                 Session = sessionmaker(bind=engine)
                 self.omsSession = Session()
                 return self.omsSession
+            except Exception as e:
+                print("An Error Occurred:", e)
+                return None
+        
+        elif db_name == 'crm':
+            connection_string = f"oracle+oracledb://SA:SA@{envConfFile['db_host']}:1521/{envConfFile['service_name']}"
+            print("connection string is-", connection_string)
+            try:
+                engine = create_engine(connection_string)
+                Session = sessionmaker(bind=engine)
+                self.crmSession = Session()
+                return self.crmSession
             except Exception as e:
                 print("An Error Occurred:", e)
                 return None
@@ -82,6 +95,14 @@ class Database:
 
             else:
                 print("Failed to create a oms database session")
+
+            self.get_db_session('crm')    
+
+            if self.crmSession:
+                query_executor.execute_queries(self.crmSession, 'crm',flow_name,document_path,document_name,is_to_save_data_in_csv)
+
+            else:
+                print("Failed to create a crm database session")    
 
 
             self.get_db_session('abp')

@@ -42,11 +42,17 @@ class QueryPreparer:
         print("preparing User data-",customer_id,account_id)
 
         if customer_id and db_name=='oms' :
-            query1 = f"select CTDB_CRE_DATETIME, ORDER_UNIT_ID, ORDER_ID, STATUS, ACTION_TYPE, AP_ID, reason_id, customer_id from tborder_action where customer_id = '{customer_id}' order by CTDB_CRE_DATETIME asc"
+            query1 = f"select CTDB_CRE_DATETIME, ORDER_UNIT_ID, ORDER_ID, STATUS, ACTION_TYPE, AP_ID, reason_id, customer_id,sales_channel as Channel from tborder_action where customer_id = '{customer_id}' order by CTDB_CRE_DATETIME asc"
             query2 = f"select CHARGE_ID, CTDB_CRE_DATETIME, TYPE, DESCRIPTION, ACTUAL_PRICE, ORIGINAL_PRICE from tbbilling_Charge where ap_item_id in (select ap_id from tbap_price_plan where order_Action_id in (select ORDER_UNIT_ID from tborder_action where customer_id = '{customer_id}' order by CTDB_CRE_DATETIME desc FETCH FIRST 1 ROWS ONLY)) order by description desc"
 
             queries.append(('tborder_action', query1))
             queries.append(('tbbilling_Charge', query2))
+
+        
+        elif customer_id and db_name=='crm' :
+            query1 = f"select cust.customer_id, addr.objid, addr.x_location_id, cust.type, cust.name, cust.s_name from table_customer cust, table_con_bus_role conbusrole, table_address addr where cust.objid = conbusrole.con_bus_role2customer and conbusrole.addr_src_lowid = addr.objid and cust.s_customer_id = '{customer_id}' and conbusrole.active = '1'"
+
+            queries.append(('crm_table_customer', query1))
         
         elif customer_id and db_name=='abp' and account_id :
 
@@ -61,6 +67,7 @@ class QueryPreparer:
             query9 = f"select CHARGE_CODE, EFFECTIVE_DATE,EXPIRATION_DATE, AMOUNT, SERVICE_RECEIVER_ID, RECEIVER_CUSTOMER, PAY_CHANNEL_NO, CYCLE_CODE, getdyna(dynamic_attributes,'IMEI') as IMEI from bl1_rc_rates where RECEIVER_CUSTOMER='{customer_id}' order by sys_creation_date desc"
             query10 = f"select CHARGE_CODE, AMOUNT,SERVICE_RECEIVER_ID, RECEIVER_CUSTOMER, getdyna(dynamic_attributes,'Immediate First MRC per BO') as IFM_per_BO, getdyna(dynamic_attributes,'L9 Offer Connect Date') as L9OCD,  getdyna(dynamic_attributes,'Offer connect Date') as OCD from bl1_rc_rates where RECEIVER_CUSTOMER='{customer_id}' order by sys_creation_date desc"
             query11 = f"Select count(*),CHARGE_CODE,AMOUNT from bl1_charge_request  where RECEIVER_CUSTOMER= '{customer_id}' group by CHARGE_CODE,AMOUNT"
+            query12 = f"select PARAM_NAME,PARAM_VALUES,SYS_CREATION_DATE,EFFECTIVE_DATE from cm1_agreement_param c where agreement_no in (select SUBSCRIBER_NO from subscriber where customer_id='{customer_id}') and PARAM_NAME in ('Device tax amount','S_Bundle_Catalog_ID','S_Bundle ID') order by SYS_CREATION_DATE desc"
 
 
             queries.append(('subscriber', query1))
@@ -74,6 +81,7 @@ class QueryPreparer:
             queries.append(('bl1_rc_rates', query9))
             queries.append(('bl1_rc_rates', query10))
             queries.append(('bl1_charge_request', query11))
+            queries.append(('cm1_param', query12))
 
 
         return queries
