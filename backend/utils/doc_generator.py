@@ -2,7 +2,7 @@ from docx import Document
 from docx.shared import Pt,Mm, RGBColor
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
-from utils.check_existing_file import check_file_status
+from .check_existing_file import check_file_status
 import os
 
 def make_file_path(folder_path,file_name):

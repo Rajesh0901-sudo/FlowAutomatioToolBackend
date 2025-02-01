@@ -1,6 +1,6 @@
-from utils.db import Database
+from .db import Database
 from flask import jsonify
-from utils.db import Database
+from .db import Database
 
 def handle_external_api_method(data):
 

@@ -1,11 +1,11 @@
 # queries.py
 from sqlalchemy import text
-from utils.doc_generator import save_results_to_docx
+from .doc_generator import save_results_to_docx
 import json
 import os
-from utils.prepare_queries import QueryPreparer
-from utils.prepare_queries_for_all_column import CSVQueryPreparer
-from utils.csv_file_generator import save_results_to_csv
+from .prepare_queries import QueryPreparer
+from .prepare_queries_for_all_column import CSVQueryPreparer
+from .csv_file_generator import save_results_to_csv
 
 class QueryExecutor:
     def __init__(self):

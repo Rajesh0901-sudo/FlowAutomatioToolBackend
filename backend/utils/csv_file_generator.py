@@ -1,5 +1,5 @@
 
-from utils.check_existing_file import check_file_status
+from .check_existing_file import check_file_status
 import os
 import csv
 

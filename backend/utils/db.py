@@ -2,8 +2,8 @@
 from sqlalchemy import create_engine, text
 import oracledb
 from sqlalchemy.orm import sessionmaker
-from utils.config import ConfigManager
-from utils.queries import QueryExecutor
+from .config import ConfigManager
+from .queries import QueryExecutor
 import os
 
 
@@ -30,7 +30,7 @@ class Database:
         
         dirname = os.path.dirname(__file__)
         print(dirname)
-        oracle_client_file = os.path.join(dirname, '../../../Oracle_Instant_Client\instantclient_23_6')  
+        oracle_client_file = os.path.join(dirname, '../../Oracle_Instant_Client\instantclient_23_6')  
         print(oracle_client_file)
 
 
